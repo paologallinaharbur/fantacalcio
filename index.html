@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Images</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff; /* Set text color to white for better contrast */
+        }
+        /* Center images horizontally */
+        .container {
+            text-align: center;
+        }
+        /* Add some space between images */
+        img {
+            margin: 10px;
+        }
+        /* Style for the list */
+        .list-container {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            display: inline-block; /* This ensures the list is centered */
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ccc;
+            font-size: 18px;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="uno.jpeg" alt="Image 1" width="300">
+        <img src="due.jpeg" alt="Image 2" width="300">
+    </div>
+    <div class="container">
+        <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+    </div>
+    <div class="container">
+        <img src="tre.jpeg" alt="Image 3" width="630">
+    </div>
+</body>
+</html>
