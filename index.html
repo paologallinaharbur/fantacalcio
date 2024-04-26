@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Images</title>
+    <title>Three Images with Styled and Centered List</title>
     <style>
+        /* Set background color to black */
         body {
             background-color: #000;
             color: #fff; /* Set text color to white for better contrast */
+            font-family: Arial, sans-serif; /* Use a common sans-serif font */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
         /* Center images horizontally */
         .container {
@@ -15,11 +19,17 @@
         }
         /* Add some space between images */
         img {
-            margin: 10px;
+            margin: 3px;
+            max-width: 100%; /* Ensure images don't exceed container width */
+            height: auto; /* Maintain aspect ratio */
         }
         /* Style for the list */
         .list-container {
             text-align: center;
+        }
+        .list-title {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
         ul {
             list-style-type: none;
@@ -27,23 +37,33 @@
             margin: 0;
             text-align: left;
             display: inline-block; /* This ensures the list is centered */
+
         }
         li {
             padding: 8px 0;
-            border-bottom: 1px solid #ccc;
             font-size: 18px;
         }
         li:last-child {
             border-bottom: none;
         }
+        /* Media query for mobile devices */
+        @media only screen and (max-width: 600px) {
+            .list-container {
+                width: 100%; /* Make the list container full width */
+            }
+            ul {
+                max-width: none; /* Remove max-width restriction on smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="uno.jpeg" alt="Image 1" width="300">
-        <img src="due.jpeg" alt="Image 2" width="300">
+        <img src="uno.jpeg" alt="Image 1" width="150">
+        <img src="due.jpeg" alt="Image 2" width="150">
     </div>
-    <div class="container">
+    <div class="container list-container">
+        <div class="list-title">List Title</div>
         <ul>
             <li>List item 1</li>
             <li>List item 2</li>
@@ -51,7 +71,7 @@
         </ul>
     </div>
     <div class="container">
-        <img src="tre.jpeg" alt="Image 3" width="630">
+        <img src="tre.jpeg" alt="Image 3" width="303">
     </div>
 </body>
 </html>
