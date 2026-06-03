@@ -1,123 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three Images with Styled and Centered List</title>
+    <meta name="description" content="Albo d'oro della lega Fantacalcio">
+    <title>Fantacalcio · Albo d'Oro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Set background color to  black */
-        body {
-            background-color: #000;
-            color: #fff; /* Set text color to white for better contrast */
-            font-family: Arial, sans-serif; /* Use a common sans-serif font */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+        :root {
+            --bg-0: #0a0e0a;
+            --bg-1: #111714;
+            --bg-2: #1a221d;
+            --gold: #d4af37;
+            --gold-soft: #b8941f;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+            --green: #00a86b;
+            --green-deep: #006b3c;
+            --text: #f5f5f0;
+            --text-dim: #9ca29c;
+            --border: rgba(212, 175, 55, 0.18);
         }
-        /* Center images horizontally */
-        .container {
-            text-align: center;
-        }
-        /* Add some space between images */
-        img {
-            margin: 3px;
-            max-width: 100%; /* Ensure images don't exceed container width */
-            height: auto; /* Maintain aspect ratio */
-        }
-        /* Style for the list */
-        .list-container {
-            text-align: center;
-        }
-        .list-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
-            display: inline-block; /* This ensures the list is centered */
 
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at top, rgba(0, 168, 107, 0.08), transparent 60%),
+                radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.06), transparent 60%),
+                var(--bg-0);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        li {
-            padding: 8px 0;
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 64px 24px 48px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            max-width: 480px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-images img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .hero-images img:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 0 32px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 8vw, 88px);
+            letter-spacing: 0.08em;
+            margin: 0;
+            line-height: 1;
+            background: linear-gradient(180deg, #fff 0%, var(--gold) 60%, var(--gold-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* NAV */
+        nav.tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 16px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 10, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 10;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav.tabs a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        nav.tabs a:hover {
+            color: var(--gold);
+            border-color: var(--border);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 56px 0 24px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 0.06em;
+            text-align: center;
+            margin: 0 0 8px;
+            color: var(--text);
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin: 0 0 40px;
+        }
+
+        /* PODIUM */
+        .podium {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 720px;
+            margin: 0 auto 48px;
+            align-items: end;
+        }
+
+        .podium-step {
+            background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px 12px 4px 4px;
+            padding: 20px 12px 16px;
+            text-align: center;
+            position: relative;
+        }
+
+        .podium-step .rank {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .podium-step .name {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+
+        .podium-step .count {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .podium-step.first { padding-top: 32px; padding-bottom: 24px; border-color: var(--gold); }
+        .podium-step.first .rank { color: var(--gold); font-size: 48px; }
+        .podium-step.second { border-color: var(--silver); }
+        .podium-step.second .rank { color: var(--silver); }
+        .podium-step.third { border-color: var(--bronze); }
+        .podium-step.third .rank { color: var(--bronze); }
+
+        /* TIMELINE / TABLE */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .row:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold);
+        }
+
+        .row.current {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(0, 168, 107, 0.08));
+            border-color: var(--gold);
+        }
+
+        .row .year {
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 18px;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
         }
-        li:last-child {
-            border-bottom: none;
+
+        .row .winner {
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.06em;
+            color: var(--text);
         }
-        /* Media query for mobile devices */
-        @media only screen and (max-width: 600px) {
-            .list-container {
-                width: 100%; /* Make the list container full width */
-            }
-            ul {
-                max-width: none; /* Remove max-width restriction on smaller screens */
-            }
+
+        .row.current .winner { color: var(--gold); }
+
+        .trophy-icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-right: 6px;
+            vertical-align: -2px;
+        }
+
+        /* MENZIONI */
+        .mentions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .mention {
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--green);
+            border-radius: 8px;
+            padding: 18px 22px;
+            font-size: 15px;
+            line-height: 1.55;
+            transition: transform 0.2s ease;
+        }
+
+        .mention:hover {
+            transform: translateX(4px);
+        }
+
+        .mention .icon {
+            color: var(--green);
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        /* FINALE */
+        .finale {
+            text-align: center;
+            padding: 56px 24px 80px;
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
+        }
+
+        .finale img {
+            max-width: min(90%, 360px);
+            border-radius: 16px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border);
+        }
+
+        .finale .footnote {
+            margin-top: 24px;
+            color: var(--text-dim);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero { padding: 48px 16px 32px; }
+            .hero-images img { width: 110px; height: 110px; }
+            section { padding: 40px 0 16px; }
+            .podium { gap: 6px; }
+            .podium-step { padding: 14px 6px 10px; }
+            .podium-step .rank { font-size: 28px; }
+            .podium-step.first .rank { font-size: 36px; }
+            .podium-step .name { font-size: 13px; }
+            nav.tabs a { padding: 6px 10px; font-size: 11px; }
+            .row { padding: 12px 14px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="uno.jpeg" alt="Image 1" width="150">
-        <img src="due.jpeg" alt="Image 2" width="150">
-    </div>
-    <div class="container list-container">
-        <div class="list-title">Albo d'oro</div>
-        <ul>
-            <li>2025/2026 DAMATO</li>
-            <li>2024/2025 CICCA</li>
-            <li>2023/2024 NICO</li>
-            <li>2022/2023 SAM</li>
-            <li>2021/2022 BELLA</li>
-            <li>2020/2021 RUSSO</li> 
-            <li>2019/2020 SAM </li>
-            <li>2018/2019 CICCA</li>
-            <li>2017/2018 NICO</li>
-            <li>2016/2017 SAM</li>
-            <li>2015/2016 GALLO</li>
-            <li>2014/2015 SAM </li>
-            <li>2013/2014 NICO</li>
-            <li>2012/2013 NICO</li>
-            <li>2011/2012 NICO</li>
-            <li>2010/2011 BELLA</li>
-            <li>2009/2010 CICCA</li>
-            <li></li>
-        </ul>
-    </div>
-    <div class="container list-container">
-        <div class="list-title">Menzioni d'onore</div>
-        <ul>
-            <li>Sam, Nico, Cicca Doblete x1 </li>
-            <li>Russo doblete con coppa merda x1 </li>
-            <li>Sam unico vincitore coppa covid</li>
-            <li>Bellando detentore coppa Osimhen</li>
-            <li>Paolo detentore coppa Natale</li>
-            <li>Cicca minor punteggio di sempre 21 punti a fine anno </li>
-            <li>Ste non ha vinto per 225 giorni dalla 9 giornata fino alla penultima</li>
-            <li>Fra nel 25/26 nonostante il miglior punteggio paga la penale </li>
-            <li></li>
-        </ul>
-    </div>
-    <div class="container list-container">
-        <div class="list-title">Albo d'oro coppe</div>
-        <ul>
-            <li>2025/2026 NICO</li>
-            <li>2024/2025 RUSSO</li>
-            <li>2023/2024 NICO</li>
-            <li>2022/2023 FRA</li>
-            <li>2021/2022 NICO</li>
-            <li>2020/2021 DAMA</li>
-            <li>2019/2020 SAM</li>
-            <li>2018/2019 CICCA</li>
-            <li>2017/2018 DAVE?</li>
-            <li>2016/2017 FRA</li>
-            <li>2015/2016 FRA</li>
-        </ul>
-    </div>
 
-    <div class="container">
-        <img src="tre.jpeg" alt="Image 3" width="303">
-    </div>
+    <header class="hero">
+        <div class="hero-images">
+            <img src="uno.jpeg" alt="Lega Fantacalcio 1">
+            <img src="due.jpeg" alt="Lega Fantacalcio 2">
+        </div>
+        <h1>Fantacalcio</h1>
+        <div class="subtitle">Hall of Fame · Lega Storica</div>
+    </header>
+
+    <nav class="tabs">
+        <a href="#scudetti">Albo d'Oro</a>
+        <a href="#menzioni">Menzioni d'Onore</a>
+        <a href="#coppe">Coppe</a>
+    </nav>
+
+    <main class="wrap">
+
+        <section id="scudetti">
+            <h2 class="section-title">Albo d'Oro</h2>
+            <p class="section-sub">Campioni della Lega</p>
+
+            <div class="podium" id="podium-scudetti"></div>
+
+            <div class="timeline" id="timeline-scudetti"></div>
+        </section>
+
+        <section id="menzioni">
+            <h2 class="section-title">Menzioni d'Onore</h2>
+            <p class="section-sub">Glorie, infamie e leggende</p>
+
+            <div class="mentions">
+                <div class="mention"><span class="icon">★</span>Sam, Nico, Cicca — doblete x1</div>
+                <div class="mention"><span class="icon">★</span>Russo — doblete con coppa merda x1</div>
+                <div class="mention"><span class="icon">★</span>Sam unico vincitore della coppa Covid</div>
+                <div class="mention"><span class="icon">★</span>Bellando detentore della coppa Osimhen</div>
+                <div class="mention"><span class="icon">★</span>Paolo detentore della coppa Natale</div>
+                <div class="mention"><span class="icon">★</span>Cicca — minor punteggio di sempre: 21 punti a fine anno</div>
+                <div class="mention"><span class="icon">★</span>Ste non ha vinto per 225 giorni, dalla 9ª giornata fino alla penultima</div>
+                <div class="mention"><span class="icon">★</span>Fra nel 25/26 nonostante il miglior punteggio paga la penale</div>
+                <div class="mention"><span class="icon">★</span>Davide, Francesco, Stefano, Canale, Manzon, Leone non hanno mai vinto il campionato </div>
+                <div class="mention"><span class="icon">★</span>La giustizia sportiva ha deciso di non revocare il campionato "cavani" a bellando</div>
+            </div>
+        </section>
+
+        <section id="coppe">
+            <h2 class="section-title">Albo d'Oro Coppe</h2>
+            <p class="section-sub">Vincitori della coppa</p>
+
+            <div class="podium" id="podium-coppe"></div>
+
+            <div class="timeline" id="timeline-coppe"></div>
+        </section>
+
+    </main>
+
+    <footer class="finale">
+        <img src="tre.jpeg" alt="Lega Fantacalcio">
+        <div class="footnote">Fantacalcio · 2009 — present</div>
+    </footer>
+
+    <script>
+        const scudetti = [
+            { year: "2025/2026", winner: "DAMATO" },
+            { year: "2024/2025", winner: "CICCA" },
+            { year: "2023/2024", winner: "NICO" },
+            { year: "2022/2023", winner: "SAM" },
+            { year: "2021/2022", winner: "BELLA" },
+            { year: "2020/2021", winner: "RUSSO" },
+            { year: "2019/2020", winner: "SAM" },
+            { year: "2018/2019", winner: "CICCA" },
+            { year: "2017/2018", winner: "NICO" },
+            { year: "2016/2017", winner: "SAM" },
+            { year: "2015/2016", winner: "GALLO" },
+            { year: "2014/2015", winner: "SAM" },
+            { year: "2013/2014", winner: "NICO" },
+            { year: "2012/2013", winner: "NICO" },
+            { year: "2011/2012", winner: "NICO" },
+            { year: "2010/2011", winner: "BELLA" },
+            { year: "2009/2010", winner: "CICCA" },
+        ];
+
+        const coppe = [
+            { year: "2025/2026", winner: "NICO" },
+            { year: "2024/2025", winner: "RUSSO" },
+            { year: "2023/2024", winner: "NICO" },
+            { year: "2022/2023", winner: "FRA" },
+            { year: "2021/2022", winner: "NICO" },
+            { year: "2020/2021", winner: "DAMA" },
+            { year: "2019/2020", winner: "SAM" },
+            { year: "2018/2019", winner: "CICCA" },
+            { year: "2017/2018", winner: "DAVE?" },
+            { year: "2016/2017", winner: "FRA" },
+            { year: "2015/2016", winner: "FRA" },
+        ];
+
+        function tally(list) {
+            const counts = {};
+            list.forEach(r => { counts[r.winner] = (counts[r.winner] || 0) + 1; });
+            return Object.entries(counts)
+                .sort((a, b) => b[1] - a[1])
+                .map(([name, count]) => ({ name, count }));
+        }
+
+        function renderPodium(containerId, list) {
+            const ranking = tally(list);
+            const top3 = ranking.slice(0, 3);
+            const order = [1, 0, 2];
+            const classes = ["second", "first", "third"];
+            const labels = ["2°", "1°", "3°"];
+            const container = document.getElementById(containerId);
+            order.forEach((idx, i) => {
+                const entry = top3[idx];
+                if (!entry) return;
+                const step = document.createElement("div");
+                step.className = "podium-step " + classes[i];
+                step.innerHTML = `
+                    <div class="rank">${labels[i]}</div>
+                    <div class="name">${entry.name}</div>
+                    <div class="count">${entry.count} ${entry.count === 1 ? "titolo" : "titoli"}</div>
+                `;
+                container.appendChild(step);
+            });
+        }
+
+        function renderTimeline(containerId, list) {
+            const container = document.getElementById(containerId);
+            list.forEach((row, i) => {
+                const div = document.createElement("div");
+                div.className = "row" + (i === 0 ? " current" : "");
+                div.innerHTML = `
+                    <span class="year">${row.year}</span>
+                    <span class="winner">${row.winner}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        renderPodium("podium-scudetti", scudetti);
+        renderTimeline("timeline-scudetti", scudetti);
+        renderPodium("podium-coppe", coppe);
+        renderTimeline("timeline-coppe", coppe);
+    </script>
+
 </body>
 </html>
